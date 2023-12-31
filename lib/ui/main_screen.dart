@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:travel_checklist/ui/widget/category_tabBar.dart';
 
+import '../model/todo.dart';
+import 'create_screen.dart';
+
 class MainScreen extends StatefulWidget {
   const MainScreen({super.key});
 
@@ -10,6 +13,11 @@ class MainScreen extends StatefulWidget {
 }
 
 class _MainScreenState extends State<MainScreen> {
+  final todos = [
+    Todo(category: 'immigration', title: 'title 1'),
+    Todo(category: 'clothes', title: 'title 1'),
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -48,7 +56,12 @@ class _MainScreenState extends State<MainScreen> {
 
       backgroundColor: Colors.white,
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => CreateScreen()),
+          );
+        },
         backgroundColor: Theme.of(context).colorScheme.tertiary,
         child: const Icon(Icons.add),
       ),
