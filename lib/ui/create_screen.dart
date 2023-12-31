@@ -30,9 +30,22 @@ class _CreateScreenState extends State<CreateScreen> {
 
   void inputMissingPopup(BuildContext context) {
     Fluttertoast.showToast(
-      msg: 'This field is required.',
+      msg: 'Text field is required.',
       toastLength: Toast.LENGTH_LONG,
-      timeInSecForIosWeb: 5, // 5초 동안 보여지도록 설정
+      timeInSecForIosWeb: 5,
+      // 5초 동안 보여지도록 설정
+      backgroundColor: Colors.grey,
+      textColor: Colors.white,
+      fontSize: 16.0,
+    );
+  }
+
+  void categoryNotSelectedPopup(BuildContext context) {
+    Fluttertoast.showToast(
+      msg: 'Category is not selected',
+      toastLength: Toast.LENGTH_LONG,
+      timeInSecForIosWeb: 5,
+      // 5초 동안 보여지도록 설정
       backgroundColor: Colors.grey,
       textColor: Colors.white,
       fontSize: 16.0,
@@ -47,10 +60,17 @@ class _CreateScreenState extends State<CreateScreen> {
         actions: [
           IconButton(
             onPressed: () async {
-              if (selectedButtonIndex == -1 || _textController.text == '') {
+              if (selectedButtonIndex == -1) {
+                return categoryNotSelectedPopup(context);
+              } else if (_textController.text == '') {
                 return inputMissingPopup(context);
               }
-              // await todos.add(Todo(title: _textController.text, category: _categoryList[selectedButtonIndex]));
+              await todos.add(Todo(
+                  title: _textController.text,
+                  category: _categoryList[selectedButtonIndex]));
+              if (mounted) {
+                Navigator.pop(context);
+              }
             },
             icon: const Icon(Icons.done),
           ),

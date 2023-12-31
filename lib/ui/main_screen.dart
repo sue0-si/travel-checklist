@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
+import 'package:travel_checklist/ui/main.dart';
 import 'package:travel_checklist/ui/widget/category_tabBar.dart';
 
-import '../model/todo.dart';
 import 'create_screen.dart';
 
 class MainScreen extends StatefulWidget {
@@ -13,11 +13,6 @@ class MainScreen extends StatefulWidget {
 }
 
 class _MainScreenState extends State<MainScreen> {
-  final todos = [
-    Todo(category: 'immigration', title: 'title 1'),
-    Todo(category: 'clothes', title: 'title 1'),
-  ];
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -35,7 +30,7 @@ class _MainScreenState extends State<MainScreen> {
       ),
       body: Column(
         children: [
-          Expanded(
+          const Expanded(
             flex: 1,
             child: DefaultTabController(
               length: 4,
@@ -45,22 +40,23 @@ class _MainScreenState extends State<MainScreen> {
           Expanded(
             flex: 1,
             child: ListView(
-              children: [
-                Text('Hi'),
-                Text('Hello'),
-              ],
-            ),
+                children: todos.values
+                    .map((todo) => ListTile(
+                          title: Text(todo.title),
+                          subtitle: Text(todo.category),
+                        ))
+                    .toList()),
           ),
         ],
       ),
-
       backgroundColor: Colors.white,
       floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          Navigator.push(
+        onPressed: () async {
+          await Navigator.push(
             context,
             MaterialPageRoute(builder: (context) => CreateScreen()),
           );
+          setState(() {});
         },
         backgroundColor: Theme.of(context).colorScheme.tertiary,
         child: const Icon(Icons.add),
@@ -68,4 +64,3 @@ class _MainScreenState extends State<MainScreen> {
     );
   }
 }
-
