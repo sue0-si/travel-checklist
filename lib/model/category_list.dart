@@ -1,6 +1,7 @@
 class Category {
+  final List<String> categoryList = ['immigration', 'electronics', 'makeups', 'clothes', 'etc'];
 
-  List<String> immigration = [
+  final List<String> immigration = [
     'passport',
     'passport copy',
     'e-ticket',
@@ -9,7 +10,7 @@ class Category {
     'driver\'s license'
   ];
 
-  List<String> electronics = [
+  final List<String> electronics = [
     'charger',
     'airpod',
     'speaker',
@@ -17,14 +18,14 @@ class Category {
     'Camera',
   ];
 
-  List<String> makeups = [
+  final List<String> makeups = [
     'sunscreen',
     'perfume',
     'body wash',
     'form cleanser'
   ];
 
-  List<String> clothes = [
+  final List<String> clothes = [
     'outer',
     'underwear',
     'socks',

@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 
 class CategoryTabBar extends StatelessWidget {
-  const CategoryTabBar({
-    super.key,
-  });
+  const CategoryTabBar({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -39,7 +37,6 @@ class CategoryTabBar extends StatelessWidget {
                         child: GridView.builder(
                           itemCount: 10,
                           itemBuilder: (context, index) => ElevatedButton(
-                            style: ButtonStyle(),
                             onPressed: () {},
                             child: const Text('buttonon'),
                           ),
