@@ -1,7 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:hive_flutter/adapters.dart';
 import 'package:travel_checklist/ui/main_screen.dart';
 
-void main() {
+import '../model/todo.dart';
+
+late final Box<Todo> todos;
+
+void main() async {
+  await Hive.initFlutter();
+  Hive.registerAdapter(TodoAdapter());
+  todos = await Hive.openBox<Todo>('todoList.db');
   runApp(const MyApp());
 }
 
