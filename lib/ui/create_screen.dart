@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:travel_checklist/model/todo.dart';
 
 import 'main.dart';
@@ -27,6 +28,17 @@ class _CreateScreenState extends State<CreateScreen> {
     super.dispose();
   }
 
+  void inputMissingPopup(BuildContext context) {
+    Fluttertoast.showToast(
+      msg: 'This field is required.',
+      toastLength: Toast.LENGTH_LONG,
+      timeInSecForIosWeb: 5, // 5초 동안 보여지도록 설정
+      backgroundColor: Colors.grey,
+      textColor: Colors.white,
+      fontSize: 16.0,
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -35,8 +47,8 @@ class _CreateScreenState extends State<CreateScreen> {
         actions: [
           IconButton(
             onPressed: () async {
-              if (selectedButtonIndex == -1) {
-
+              if (selectedButtonIndex == -1 || _textController.text == '') {
+                return inputMissingPopup(context);
               }
               // await todos.add(Todo(title: _textController.text, category: _categoryList[selectedButtonIndex]));
             },
