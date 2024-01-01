@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:travel_checklist/ui/widget/category_item_button.dart';
+
+import '../../model/category_list.dart';
 
 class CategoryTabBar extends StatelessWidget {
   const CategoryTabBar({super.key});
@@ -26,35 +29,10 @@ class CategoryTabBar extends StatelessWidget {
           Expanded(
             child: TabBarView(
               children: [
-                SizedBox(
-                  child: Column(
-                    children: [
-                      const Text('button1'),
-                      const SizedBox(
-                        height: 16,
-                      ),
-                      Expanded(
-                        child: GridView.builder(
-                          itemCount: 10,
-                          itemBuilder: (context, index) => ElevatedButton(
-                            onPressed: () {},
-                            child: const Text('buttonon'),
-                          ),
-                          gridDelegate:
-                              const SliverGridDelegateWithFixedCrossAxisCount(
-                            crossAxisCount: 3,
-                            mainAxisSpacing: 16,
-                            crossAxisSpacing: 16,
-                            childAspectRatio: 2.0,
-                          ),
-                        ),
-                      )
-                    ],
-                  ),
-                ),
-                const Center(child: Text('Tab2')),
-                const Center(child: Text('Tab3')),
-                const Center(child: Text('Tab4')),
+                CategoryItemButton(itemList: Categories().immigration),
+                CategoryItemButton(itemList: Categories().electronics),
+                CategoryItemButton(itemList: Categories().clothes),
+                CategoryItemButton(itemList: Categories().makeups),
               ],
             ),
           ),
