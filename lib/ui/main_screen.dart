@@ -49,6 +49,10 @@ class _MainScreenState extends State<MainScreen> {
                             await todo.save();
                             setState(() {});
                           },
+                          onDelete: (Todo) async {
+                            await todo.delete();
+                            setState(() {});
+                          },
                         ))
                     .toList()),
           ),
@@ -59,7 +63,7 @@ class _MainScreenState extends State<MainScreen> {
         onPressed: () async {
           await Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => CreateScreen()),
+            MaterialPageRoute(builder: (context) => const CreateScreen()),
           );
           setState(() {});
         },
