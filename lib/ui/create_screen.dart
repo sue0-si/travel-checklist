@@ -33,7 +33,6 @@ class _CreateScreenState extends State<CreateScreen> {
       msg: 'Text field is required.',
       toastLength: Toast.LENGTH_LONG,
       timeInSecForIosWeb: 5,
-      // 5초 동안 보여지도록 설정
       backgroundColor: Colors.grey,
       textColor: Colors.white,
       fontSize: 16.0,
@@ -45,7 +44,6 @@ class _CreateScreenState extends State<CreateScreen> {
       msg: 'Category is not selected',
       toastLength: Toast.LENGTH_LONG,
       timeInSecForIosWeb: 5,
-      // 5초 동안 보여지도록 설정
       backgroundColor: Colors.grey,
       textColor: Colors.white,
       fontSize: 16.0,
@@ -79,6 +77,7 @@ class _CreateScreenState extends State<CreateScreen> {
           ),
         ],
       ),
+      resizeToAvoidBottomInset: false,
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
@@ -108,7 +107,6 @@ class _CreateScreenState extends State<CreateScreen> {
                       });
                     },
                     style: ButtonStyle(
-                      // 현재 선택된 버튼이면 border를 두껍게
                       side: MaterialStateProperty.all<BorderSide>(
                         BorderSide(
                           width: selectedButtonIndex == index ? 3.0 : 0.0,
@@ -125,16 +123,18 @@ class _CreateScreenState extends State<CreateScreen> {
             ),
             Expanded(
               flex: 2,
-              child: TextField(
-                controller: _textController,
-                decoration: InputDecoration(
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10.0),
+              child: SingleChildScrollView(
+                child: TextField(
+                  controller: _textController,
+                  decoration: InputDecoration(
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10.0),
+                    ),
+                    hintStyle: TextStyle(color: Colors.grey[800]),
+                    hintText: 'Enter task',
+                    filled: true,
+                    fillColor: Colors.white70,
                   ),
-                  hintStyle: TextStyle(color: Colors.grey[800]),
-                  hintText: 'Enter task',
-                  filled: true,
-                  fillColor: Colors.white70,
                 ),
               ),
             ),
