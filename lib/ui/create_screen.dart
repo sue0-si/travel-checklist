@@ -63,12 +63,14 @@ class _CreateScreenState extends State<CreateScreen> {
               if (selectedButtonIndex == -1) {
                 return categoryNotSelectedPopup(context);
               }
-              // else if (_textController.text == '') {
-              //   return inputMissingPopup(context);
-              // }
+              else if (_textController.text == '') {
+                return inputMissingPopup(context);
+              }
               await todos.add(Todo(
-                  title: _textController.text,
-                  category: _categoryList[selectedButtonIndex]));
+                title: _textController.text,
+                category: _categoryList[selectedButtonIndex],
+                isDone: false,
+              ));
               if (mounted) {
                 Navigator.pop(context);
               }

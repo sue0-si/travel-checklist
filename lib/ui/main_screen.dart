@@ -4,6 +4,7 @@ import 'package:travel_checklist/ui/main.dart';
 import 'package:travel_checklist/ui/widget/category_tabBar.dart';
 
 import 'create_screen.dart';
+import 'widget/list_item.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({super.key});
@@ -41,9 +42,13 @@ class _MainScreenState extends State<MainScreen> {
             flex: 1,
             child: ListView(
                 children: todos.values
-                    .map((todo) => ListTile(
-                          title: Text(todo.title),
-                          subtitle: Text(todo.category),
+                    .map((todo) => ListItem(
+                          todo: todo,
+                          onTap: (e) async {
+                            e.isDone = !e.isDone;
+                            await todo.save();
+                            setState(() {});
+                          },
                         ))
                     .toList()),
           ),
