@@ -4,7 +4,9 @@ import 'package:travel_checklist/ui/widget/category_item_button.dart';
 import '../../model/category_list.dart';
 
 class CategoryTabBar extends StatelessWidget {
-  const CategoryTabBar({super.key});
+  const CategoryTabBar({
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -29,10 +31,22 @@ class CategoryTabBar extends StatelessWidget {
           Expanded(
             child: TabBarView(
               children: [
-                CategoryItemButton(itemList: Categories().immigration),
-                CategoryItemButton(itemList: Categories().electronics),
-                CategoryItemButton(itemList: Categories().clothes),
-                CategoryItemButton(itemList: Categories().makeups),
+                CategoryItemButton(
+                  itemList: Categories().immigration,
+                  tabIndex: 'Immigration',
+                ),
+                CategoryItemButton(
+                  itemList: Categories().electronics,
+                  tabIndex: 'Electronics',
+                ),
+                CategoryItemButton(
+                  itemList: Categories().clothes,
+                  tabIndex: 'Clothes',
+                ),
+                CategoryItemButton(
+                  itemList: Categories().makeups,
+                  tabIndex: 'Makeups',
+                ),
               ],
             ),
           ),

@@ -7,7 +7,7 @@ class ListItem extends StatelessWidget {
   final Function(Todo) onTap;
   final Function(Todo) onDelete;
 
-  const ListItem({super.key, required this.todo, required this.onTap, required this.onDelete});
+  const ListItem({super.key, required this.todo, required this.onTap, required this.onDelete,});
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +30,7 @@ class ListItem extends StatelessWidget {
         onTap: () {
           onDelete(todo);
         },
-        child: const Icon(Icons.delete_forever),
+        child: const Icon(Icons.delete_forever, color: Colors.red),
       ) : null,
     );
   }
