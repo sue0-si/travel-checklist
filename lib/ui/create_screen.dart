@@ -62,9 +62,10 @@ class _CreateScreenState extends State<CreateScreen> {
             onPressed: () async {
               if (selectedButtonIndex == -1) {
                 return categoryNotSelectedPopup(context);
-              } else if (_textController.text == '') {
-                return inputMissingPopup(context);
               }
+              // else if (_textController.text == '') {
+              //   return inputMissingPopup(context);
+              // }
               await todos.add(Todo(
                   title: _textController.text,
                   category: _categoryList[selectedButtonIndex]));
@@ -123,7 +124,7 @@ class _CreateScreenState extends State<CreateScreen> {
             Expanded(
               flex: 2,
               child: TextField(
-                controller: TextEditingController(),
+                controller: _textController,
                 decoration: InputDecoration(
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10.0),
